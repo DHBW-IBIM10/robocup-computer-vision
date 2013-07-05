@@ -147,7 +147,81 @@ SSL Vision stuff.
 
 \subsection{Application Overview}
 
+
+
+\begin{itemize}
+  \item Written in C++, uses multithreading and comes with a GUI for
+  configuration and controlling outputs
+  \item Architecture: Multi-camera stack with one thread for each camera, for each camera plugins can be enabled
+  \item Image processing framework with a modular structure, consisting of multiple plugins and common interfaces for data transfer
+  \item Input: raw video streams from various cameras (IEEE 1394 / DCAM) or filestreams for development and testing
+  \item Output: post processed image data in the GUI, robots identified by id and their positions
+  \item See
+  \url{http://www.informatik.uni-bremen.de/agebv/downloads/published/zickler_rs_09.pdf}
+\end{itemize}
+
 \subsection{The Image Processing Stack}
+
+\begin{itemize}
+  \item each robot on the field is uniquely identifiable by a colored marker
+  \item SSL-Vision needs to determine robots’ real-world locations (as opposed
+        to location in the image), directions and IDs to get these data
+        different algorithms/techniques need to be applied in real time
+  \item color segmentation
+  \item camera calibration
+  \item pattern detection
+\end{itemize}
+
+\paragraph{Color segmentation}
+color segmentation is done with plugins for:
+\begin{itemize}
+  \item color thresholding
+  \item runlength-encoding 
+  \item region extraction
+  \item region sorting
+\end{itemize}
+
+\paragraph{Color thresholding}
+color thresholding is done via a lookup table which maps from the input image’s
+3d color space (YUV) to a unique color label which represents any of the marker
+colors, the ball color or other desired colors (source code) YUV: Color space,
+e.g. used in PAL and NTSC videos, Y represents lumination and U/V color
+
+\paragraph{Runlength encoding}
+
+\begin{itemize}
+  \item the line by line runlength encoding is applied on the thresholded image to speed up the region extraction that follows (source code)
+  \item simple data compression technique
+  \item Algorithm for runlength encoding of images:
+for each row of pixels:
+remember pixel value and go to next pixel;
+if pixel value equals previous pixel, merge pixels
+  \item Example from Wikipedia:
+“(...) screen containing plain black text on a solid white background. There will be many long runs of white pixels in the blank space, and many short runs of black pixels within the text. Let us take a hypothetical single scan line, with B representing a black pixel and W representing white:
+WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW
+If we apply the run-length encoding data compression algorithm to the above hypothetical scan line, we get the following:
+12W1B12W3B24W1B14W”
+  \item works well due to the previous color thresholding
+\end{itemize}
+
+\paragraph{Region extraction}
+
+pixels are only connected horizontally (lines)\\
+vertical connections needed to get regions (polygons)\\
+region extraction uses tree-based union find algorithm to traverse the
+runlength-encoded image and merge neighboring runs of similar colors. (plugin
+source code, region extraction source code)\\
+
+Union find algorithm:\\
+consists of find() and union()\\
+good explanation at:
+\url{http://valis.cs.uiuc.edu/~sariel/teach/2004/b/webpage/lec/22_uf.pdf} \\
+
+bounding boxes and centroids of all merged regions are then computed and finally
+sorted by color and size\\
+
+centroids will later be used for location determination
+
 
 
 
