@@ -114,26 +114,63 @@ Course: WWI2010I\\
 % Theoretical Foundation
 %----------------------------------------------------------------------------
 \newpage
-\section{RoboCup}
+\section{RoboCup \label{sec:robo}}
 Robots play soccer.
 Environment is dynamic.
 
-\subsection{RoboCup Leagues}
+Long Term Goal “By mid-21st century, a team of fully autonomous humanoid robot
+soccer players shall win the soccer game, comply with the official rule of the
+FIFA, against the winner of the most recent World
+Cup.”\footcite[Cf.][]{http://www.robocup.org/about-robocup/objective/}
 
-\subsection{Related Research Areas}
+Computational challenges are in the environment of the RoboCup.
+Comparison to chess, where computers are superior already:
+%TODO: table from robocup website
+
+\subsection{RoboCup Leagues \label{sec:robo-leagues}}
+In most other leagues robots have to rely on their own sensing, however they may communicate with each other over the air.
+Less computation power available, CV data needs to be translated to position, etc.
+Robots need to keep track of other players and the ball + movements and velocity of objects
+
+\subsection{Related Research Areas \label{sec:robo-research}}
+Computer vision is only one of many research areas that are relevant for the
+RoboCup\footcite[][]{http://www.robocup.org/about-robocup/objective/}
+\begin{itemize}
+  \item real-time sensor fusion
+  \item reactive behavior
+  \item strategy acquisition
+  \item learning
+  \item real-time planning
+  \item multi-agent systems
+  \item context recognition
+  \item vision
+  \item strategic decision-making
+  \item motor control
+  \item intelligent robot control
+  \item and many more
+\end{itemize}
 
 
 
 
 \newpage
-\section{Computer Vision at RoboCup}
+\section{Computer Vision at RoboCup \label{sec:cv-robo}}
 
 CV is used for all leagues, explain how.
 SSL Vision is used for the small size league and wil be covered in separate
 section.
 
 \subsection{Centralized}
-in small size league. centralized control and cv.
+Robots and the ball are tracked via markings. A camera above the field sends
+data to a computer which does real time analysis of image data to determine
+positions and directions using COMPUTER VISION
+
+“All objects on the field are tracked by a standardized vision system that
+processes the data provided by two cameras that are attached to a camera bar
+located 4m above the playing surface. The vision system - called SSL-Vision - is
+an open source project maintained by the league's community. “\footcite[Cf.][]{
+http://wiki.robocup.org/wiki/Small_Size_League}
+
 
 \subsection{Distributed / Autonomous}
 for other leagues. each robot has own cv.
@@ -142,10 +179,10 @@ for other leagues. each robot has own cv.
 
 
 \newpage
-\section{SSL Vision}
+\section{SSL Vision \label{sec:ssl-vision}}
 SSL Vision stuff.
 
-\subsection{Application Overview}
+\subsection{Application Overview \label{sec:ssl-overview}}
 
 
 
@@ -211,6 +248,13 @@ vertical connections needed to get regions (polygons)\\
 region extraction uses tree-based union find algorithm to traverse the
 runlength-encoded image and merge neighboring runs of similar colors. (plugin
 source code, region extraction source code)\\
+
+See \url{http://algs4.cs.princeton.edu/15uf/}
+
+Also see
+\url{http://code.google.com/p/ssl-vision/source/browse/trunk/src/app/plugins/plugin_find_blobs.cpp}
+and 
+\url{http://code.google.com/p/ssl-vision/source/browse/trunk/src/shared/cmvision/cmvision_region.cpp#97}
 
 Union find algorithm:\\
 consists of find() and union()\\
