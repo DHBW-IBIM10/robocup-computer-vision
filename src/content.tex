@@ -147,31 +147,19 @@ Control             & central       & distributed \\
 
 \subsection{RoboCup Leagues \label{sec:robo-leagues}}
 
-\subsubsection{Small Size League}
-Robots and the ball are tracked via markings. A camera above the field sends
-data to a computer which does real time analysis of image data to determine
-positions and directions using COMPUTER VISION
+%TODO: add short description for each league
 
-“All objects on the field are tracked by a standardized vision system that
-processes the data provided by two cameras that are attached to a camera bar
-located 4m above the playing surface. The vision system - called SSL-Vision - is
-an open source project maintained by the league's community. “\footcite[][]{robo_ssl_wiki}
-
-\begin{savenotes}
-\begin{figure}[htbp]
-\begin{center}
-  \includegraphics[width=0.6\textwidth]{img/ssl_dataflow.png}
-  \caption[Data flow in SSL camera setup]{Data flow in SSL camera setup\footcite[][]{robo_ssl_wiki}}
-  \label{fig:ssl_dataflow}
-\end{center}
-\end{figure}
-\end{savenotes}
+\paragraph{Humanoid} See \footcite[Cf.][]{robo_humanoid_wiki}
+ 
+\paragraph{Middle Size} See \footcite[Cf.][]{robo_ms_wiki}
+ 
+\paragraph{Simulation} See \footcite[Cf.][]{robo_simu_wiki}
+ 
+\paragraph{Small Size} See \footcite[Cf.][]{robo_ssl_wiki}
+ 
+\paragraph{Standard Platform} See \footcite[Cf.][]{robo_std_wiki}
 
 
-\subsubsection{Other Leagues}
-In most other leagues robots have to rely on their own sensing, however they may communicate with each other over the air.
-Less computation power available, CV data needs to be translated to position, etc.
-Robots need to keep track of other players and the ball + movements and velocity of objects
 
 \subsection{Related Research Areas \label{sec:robo-research}}
 Computer vision is only one of many research areas that are relevant for the
@@ -209,12 +197,29 @@ positions and directions using COMPUTER VISION
 ``All objects on the field are tracked by a standardized vision system that
 processes the data provided by two cameras that are attached to a camera bar
 located 4m above the playing surface. The vision system - called SSL-Vision - is
-an open source project maintained by the league's community."\footcite[Cf.][]{robo_ssl}
+an open source project maintained by the league's community."\footcite[Cf.][]{robo_ssl_wiki}
 
+Robots and the ball are tracked via markings. A camera above the field sends
+data to a computer which does real time analysis of image data to determine
+positions and directions using COMPUTER VISION
+
+\begin{savenotes}
+\begin{figure}[htbp]
+\begin{center}
+  \includegraphics[width=0.6\textwidth]{img/ssl_dataflow.png}
+  \caption[Data flow in SSL camera setup]{Data flow in SSL camera setup\footcite[][]{robo_ssl_wiki}}
+  \label{fig:ssl_dataflow}
+\end{center}
+\end{figure}
+\end{savenotes}
 
 \subsection{Distributed / Autonomous}
 for other leagues. each robot has own cv.
-
+In most other leagues robots have to rely on their own sensing, however they may
+communicate with each other over the air.
+Less computation power available, CV data needs to be translated to position,
+etc. Robots need to keep track of other players and the ball + movements and
+velocity of objects.
 
 
 
