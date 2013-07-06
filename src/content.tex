@@ -121,7 +121,7 @@ Environment is dynamic.
 Long Term Goal “By mid-21st century, a team of fully autonomous humanoid robot
 soccer players shall win the soccer game, comply with the official rule of the
 FIFA, against the winner of the most recent World
-Cup.”\footcite[Cf.][]{http://www.robocup.org/about-robocup/objective/}
+Cup.”\footcite[Cf.][]{robo_objectives}
 
 Computational challenges are in the environment of the RoboCup.
 Comparison to chess, where computers are superior already:
@@ -134,7 +134,7 @@ Robots need to keep track of other players and the ball + movements and velocity
 
 \subsection{Related Research Areas \label{sec:robo-research}}
 Computer vision is only one of many research areas that are relevant for the
-RoboCup\footcite[][]{http://www.robocup.org/about-robocup/objective/}
+RoboCup\footcite[Cf.][]{robo_objectives}
 \begin{itemize}
   \item real-time sensor fusion
   \item reactive behavior
@@ -165,11 +165,10 @@ Robots and the ball are tracked via markings. A camera above the field sends
 data to a computer which does real time analysis of image data to determine
 positions and directions using COMPUTER VISION
 
-“All objects on the field are tracked by a standardized vision system that
+``All objects on the field are tracked by a standardized vision system that
 processes the data provided by two cameras that are attached to a camera bar
 located 4m above the playing surface. The vision system - called SSL-Vision - is
-an open source project maintained by the league's community. “\footcite[Cf.][]{
-http://wiki.robocup.org/wiki/Small_Size_League}
+an open source project maintained by the league's community."\footcite[Cf.][]{robo_ssl}
 
 
 \subsection{Distributed / Autonomous}
@@ -193,8 +192,7 @@ SSL Vision stuff.
   \item Image processing framework with a modular structure, consisting of multiple plugins and common interfaces for data transfer
   \item Input: raw video streams from various cameras (IEEE 1394 / DCAM) or filestreams for development and testing
   \item Output: post processed image data in the GUI, robots identified by id and their positions
-  \item See
-  \url{http://www.informatik.uni-bremen.de/agebv/downloads/published/zickler_rs_09.pdf}
+  \item \footcite[Cf.][]{zickler_ssl_vision}
 \end{itemize}
 
 \subsection{The Image Processing Stack}
@@ -206,11 +204,11 @@ SSL Vision stuff.
         different algorithms/techniques need to be applied in real time
   \item color segmentation
   \item camera calibration
-  \item pattern detection
+  \item pattern detection\footcite[Cf.][]{zickler_ssl_vision}
 \end{itemize}
 
 \paragraph{Color segmentation}
-color segmentation is done with plugins for:
+color segmentation is done with plugins for:\footcite[Cf.][]{zickler_ssl_vision}
 \begin{itemize}
   \item color thresholding
   \item runlength-encoding 
@@ -222,7 +220,7 @@ color segmentation is done with plugins for:
 color thresholding is done via a lookup table which maps from the input image’s
 3d color space (YUV) to a unique color label which represents any of the marker
 colors, the ball color or other desired colors (source code) YUV: Color space,
-e.g. used in PAL and NTSC videos, Y represents lumination and U/V color
+e.g. used in PAL and NTSC videos, Y represents lumination and U/V color\footcite[Cf.][]{zickler_ssl_vision}
 
 \paragraph{Runlength encoding}
 
@@ -249,7 +247,7 @@ region extraction uses tree-based union find algorithm to traverse the
 runlength-encoded image and merge neighboring runs of similar colors. (plugin
 source code, region extraction source code)\\
 
-See \url{http://algs4.cs.princeton.edu/15uf/}
+
 
 Also see
 \url{http://code.google.com/p/ssl-vision/source/browse/trunk/src/app/plugins/plugin_find_blobs.cpp}
@@ -257,9 +255,9 @@ and
 \url{http://code.google.com/p/ssl-vision/source/browse/trunk/src/shared/cmvision/cmvision_region.cpp#97}
 
 Union find algorithm:\\
-consists of find() and union()\\
+consists of find() and union()\footcite[Cf.][]{sedgewick_union_find}\\
 good explanation at:
-\url{http://valis.cs.uiuc.edu/~sariel/teach/2004/b/webpage/lec/22_uf.pdf} \\
+\footcite[Cf.][]{wa_union_find} \\
 
 bounding boxes and centroids of all merged regions are then computed and finally
 sorted by color and size\\
