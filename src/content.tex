@@ -125,7 +125,25 @@ Cup.”\footcite[Cf.][]{robo_objectives}
 
 Computational challenges are in the environment of the RoboCup.
 Comparison to chess, where computers are superior already:
-%TODO: table from robocup website
+
+\begin{table}[htbp]
+\centering
+\begin{savenotes}
+\begin{tabular*}{0.7\textwidth}{p{0.25\textwidth} p{0.2\textwidth} p{0.2\textwidth}}
+\toprule
+                    &\textbf{Chess} & \textbf{Robocup} \\
+\midrule 
+Environment         & static		& dynamic \\
+State change        & turn taking   & real time \\
+Info. accessibility & complete      & incomplete \\
+Sensor readings     & symbolic      & non-symbolic \\
+Control             & central       & distributed \\
+\bottomrule 
+\end{tabular*}
+  \caption[Comparison of Chess and Robocup]{Comparison of Chess and Robocup\footcite[][]{robo_objectives}}
+  \label{tab:chess_comparison}
+\end{savenotes}
+\end{table}
 
 \subsection{RoboCup Leagues \label{sec:robo-leagues}}
 In most other leagues robots have to rely on their own sensing, however they may communicate with each other over the air.
