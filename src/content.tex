@@ -255,14 +255,13 @@ positions and directions using COMPUTER VISION
 \end{savenotes}
 
 \subsection{Distributed / Autonomous}
-for other leagues. each robot has own cv.
-In most other leagues robots have to rely on their own sensing, however they may
-communicate with each other over the air.
-Less computation power available, CV data needs to be translated to position,
-etc. Robots need to keep track of other players and the ball + movements and
-velocity of objects.
+In other leagues, where the size of each robot is not an issue as it is in the Small Size League, it is possible that the individual units themselves contain the necessary equipment for computer vision. This makes autonomous action possible but involves design tradeoffs concerning computing power and sensors.
 
+Communication between the robots is dependent upon the rules for each league. In the humanoid league for example individual actors are not allowed to share sensory inputs because it contradicts with the goal of "FIFA-like" football.
+In other leagues however, it is possible to have maschine-to-maschine communication.
 
+Due to the nature of the leagues, computer vision is much more difficult compared to the Small Size League chiefly because the amount of computing power available to each player is limited by the available space and power. Gathering the player's location, friend-foe-recognition and ball trajectory calculations, i.e. the tasks of computer vision, are much harder to realize is this configuration, resulting in much less sophisticated handling of game situations.
+This of course is not the point of these leagues rendering the issue somewhat moot.
 
 \newpage
 \section{SSL-Vision \label{sec:ssl-vision}}
