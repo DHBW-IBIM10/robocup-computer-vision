@@ -345,15 +345,14 @@ and for each row it compares the current pixel with the previous pixel. When the
 equal they are merged (i.e. stored as one unit). This is repeated for all pixels within each row.
 The line by line runlength encoding is applied on the thresholded image to speed up the
 region extraction that follows.
+The source code of the runlength encode plugin is available in the SSL-Vision code 
+repository.\footnote{See \url{http://code.google.com/p/ssl-vision/source/browse/trunk/src/app/plugins/plugin_runlength_encode.cpp}}
 
 \paragraph{Region extraction}
-
-pixels are only connected horizontally (lines)\\
-vertical connections needed to get regions (polygons)\\
-region extraction uses tree-based union find algorithm to traverse the
-runlength-encoded image and merge neighboring runs of similar colors. (plugin
-source code, region extraction source code)\\
-
+After the runlength encoding pixels are connected horizontally, however they
+need to be connected vertically as well to retrieve regions.\\
+The region extraction plugin uses a tree-based union find algorithm to traverse the
+runlength-encoded image and merge neighboring runs of similar colors.\footcite[Cf.][p. 6 et sq.]{zickler_ssl_vision}
 
 
 Also see
