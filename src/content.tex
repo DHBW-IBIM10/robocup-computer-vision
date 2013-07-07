@@ -354,25 +354,33 @@ need to be connected vertically as well to retrieve regions.\\
 The region extraction plugin uses a tree-based union find algorithm to traverse the
 runlength-encoded image and merge neighboring runs of similar colors.\footcite[Cf.][p. 6 et sq.]{zickler_ssl_vision}
 
+The underlying data structure of the union find algorithm is a reverse tree, where each node points to its parent node.
+The root note points to itself.\footcite[Cf.][]{wa_union_find}
+Each set of elements is represented in such a tree.\\
+The algorithm basically consists of two elementary methods: A \textit{union}-method and a \textit{find}-method.
+The find method returns the root node for any given node. This is implemented by following the parent-pointers
+until the root node has been found. The union-method merges any two sets by hanging the root node of one set to the
+root node of the other set.\footcite[Cf.][]{wa_union_find}
 
-Also see
-\url{http://code.google.com/p/ssl-vision/source/browse/trunk/src/app/plugins/plugin_find_blobs.cpp}
-and 
-\url{http://code.google.com/p/ssl-vision/source/browse/trunk/src/shared/cmvision/cmvision_region.cpp#97}
+Thanks to the flat tree structures it is computationally cheap to find root nodes and to join multiple sets of pixels
+to larger sets.\\
+Bounding boxes and centroids of all merged regions are computed after the merging and finally
+sorted by color and size. The centroids are later used for location determination.
 
-Union find algorithm:\\
-consists of find() and union()\footcite[Cf.][]{sedgewick_union_find}\\
-good explanation at:
-\footcite[Cf.][]{wa_union_find} \\
+The implementation of the algorithm is located in
+\texttt{cmvision\_region.cpp}.\footnote{See
+\url{http://code.google.com/p/ssl-vision/source/browse/trunk/src/shared/cmvision/cmvision_region.cpp\#97}}
 
-bounding boxes and centroids of all merged regions are then computed and finally
-sorted by color and size\\
 
-centroids will later be used for location determination
 
 
 \subsubsection{Pattern Detection}
-
+After the extraction of regions and computation of their real-world coordinates,
+the processing continues with the pattern detection plugin.
+This plugin extracts the identities, locations and orientations of robots on the field.
+Additionally the location of the ball is determined.\footcite[Cf.][p. 6 et sq.]{zickler_ssl_vision}
+The internal detection algorithm
+is described in detail in a publication by \citeauthor{bruce_2003}.\footcite[Cf.][]{bruce_2003}
 
 %----------------------------------------------------------------------------
 % Closing
