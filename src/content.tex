@@ -396,37 +396,3 @@ to be in a mature state. Due to its modulare structure it can be worth consideri
 to extend and use the software in other application fields as well.
 
 
-
-%----------------------------------------------------------------------------
-% APPENDIX
-%----------------------------------------------------------------------------
-% Appendix sections need to be within the subappendices environment.
-% Use the command \appsection{title} instead of \section to introduce each
-% appendix. This will add each appendix to the list of appendices.
-
-% sets the appendix environment and resets the section counters
-\newpage \begin{appendices} 
-\appendixtocon %adds an 'Appendices' entry to the toc
-
-\appendixpage %prints the title on the page
-
-\subsection*{\listappendixname}
-%--------------------------------
-% style of the \listofappendices command is defined in header.tex
-\listofappendices
-
-% begin appendices on a new page
-\newpage
-
-%start environment for subappendices, so that new sections are formatted as
-%subsections of appendix
-\begin{subappendices}
-\renewcommand{\setthesubsection}{\arabic{subsection}:}%
-
-\appsection{Source Code}
-\label{apx:code-template}
-
-
-% close the appendices environment
-\end{subappendices}
-\end{appendices}
