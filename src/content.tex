@@ -258,43 +258,43 @@ velocity of objects.
 
 
 \newpage
-\section{SSL Vision \label{sec:ssl-vision}}
-SSL Vision stuff.
+\section{SSL-Vision \label{sec:ssl-vision}}
+
 
 \subsection{Application Overview \label{sec:ssl-overview}}
+SSL-Vision is the open source software which is used in the Small Size League to
+track game objects on the field. It is written in C++ and uses multiple threads
+for best performance. The software comes with a graphical user interface (GUI)
+which can be used for configuration and monitoring of input and output data.
+
+The software has a multi-camera stack where one thread is assigned for each camera.
+For each camera plugins can be enabled to perform various image processing
+tasks. These plugins can operate together by using common interfaces for data
+transfer.
+
+SSL-Vision receives raw video streams from various cameras as input. The
+computed information, such as robots identified by id and their appropriate
+coordinates on the field are broadcasted to the teams' servers for further
+processing and decision making. For testing and development purposes it is also
+possible to use filestreams as input for the system.
+
+\subsection{The Image Processing Flow}
+The processing stack for the Small Size League domain follows a multi-stage
+approach which is described in this section.\\
+SSL-Vision relies on colored markers to identify robots on the field.
+Each robot on the field is uniquely identifiable by a colored marker that
+consists of a combination for team identification as well as additional color
+elements to provide uniqueness for each robot.\footcite[Cf.][5]{zickler_ssl_vision}
+SSL-Vision needs to determine robots' real-world locations (as opposed to the
+location in the image), directions and IDs.
+In order to get these information different algorithms and techniques need to be
+applied in real time. One of these is color segmentation, which serves as a 
+base for the pattern detection step in the overall processing flow.
 
 
-
-\begin{itemize}
-  \item Written in C++, uses multithreading and comes with a GUI for
-  configuration and controlling outputs
-  \item Architecture: Multi-camera stack with one thread for each camera, for each camera plugins can be enabled
-  \item Image processing framework with a modular structure, consisting of multiple plugins and common interfaces for data transfer
-  \item Input: raw video streams from various cameras (IEEE 1394 / DCAM) or filestreams for development and testing
-  \item Output: post processed image data in the GUI, robots identified by id and their positions
-  \item \footcite[Cf.][]{zickler_ssl_vision}
-\end{itemize}
-
-\subsection{The Image Processing Stack}
-
-\begin{itemize}
-  \item each robot on the field is uniquely identifiable by a colored marker
-  \item SSL-Vision needs to determine robots’ real-world locations (as opposed
-        to location in the image), directions and IDs to get these data
-        different algorithms/techniques need to be applied in real time
-  \item color segmentation
-  \item camera calibration
-  \item pattern detection\footcite[Cf.][]{zickler_ssl_vision}
-\end{itemize}
-
-\paragraph{Color segmentation}
-color segmentation is done with plugins for:\footcite[Cf.][]{zickler_ssl_vision}
-\begin{itemize}
-  \item color thresholding
-  \item runlength-encoding 
-  \item region extraction
-  \item region sorting
-\end{itemize}
+\subsubsection{Color Segmentation}
+Color segmentation is done with plugins for color thresholding, runlength-encoding,
+region extraction and region sorting.\footcite[Cf.][]{zickler_ssl_vision}
 
 \paragraph{Color thresholding}
 color thresholding is done via a lookup table which maps from the input image’s
@@ -345,7 +345,7 @@ sorted by color and size\\
 centroids will later be used for location determination
 
 
-
+\subsubsection{Pattern Detection}
 
 
 %----------------------------------------------------------------------------
