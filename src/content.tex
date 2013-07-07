@@ -191,8 +191,9 @@ Robotics.''\footcite[][]{robo_std_wiki}
 
 
 \subsection{Related Research Areas \label{sec:robo-research}}
-Computer vision is only one of many research areas that are relevant for the
-RoboCup\footcite[Cf.][]{robo_objectives}
+Various research areas are relevant for the further development of the RoboCup
+and the capabilities of the robots used in the matches. An overview of the most
+important research areas is given in the list below:\footcite[Cf.][]{robo_objectives}
 \begin{itemize}
   \item real-time sensor fusion
   \item reactive behavior
@@ -201,24 +202,28 @@ RoboCup\footcite[Cf.][]{robo_objectives}
   \item real-time planning
   \item multi-agent systems
   \item context recognition
-  \item vision
+  \item computer vision
   \item strategic decision-making
   \item motor control
   \item intelligent robot control
-  \item and many more
 \end{itemize}
 
-
-
+The main role of computer vision is the detection of game objects and object
+localization on the field and will be described in further detail in the next
+section.
 
 \newpage
 \section{Computer Vision at RoboCup \label{sec:cv-robo}}
 
-CV is used for all leagues, explain how.
-SSL Vision is used for the small size league and wil be covered in separate
-section.
+Computer vision is used in all leagues of the RoboCup.
+The leagues can be categorized in fully autonomously (distributed) and centrally
+controlled robots. The Small Size League fits into the latter of these two categories.
 
 \subsection{Centralized}
+In the Small Size League a centralized computer vision system captures images
+of the game and pre-processes them before broadcasting the information to the teams
+for further processing.
+
 Robots and the ball are tracked via markings. A camera above the field sends
 data to a computer which does real time analysis of image data to determine
 positions and directions using COMPUTER VISION
