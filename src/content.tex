@@ -86,17 +86,24 @@ Course: WWI2010I\\
 %----------------------------------------------------------------------------
 \section{Introduction}
 \label{sec:introduction}
+RoboCup competitions focus on the game of soccer, where robots compete against
+each other.
+There are different leagues which each have their own challenges in terms of
+computation and research. Computer vision is a research area whichis relevant
+for all leagues in the RoboCup as it is used for tasks such as localization on
+the field or recognition of the ball.\\
+This paper gives a rough overview over the role of computer vision in the
+RoboCup and provides insight in some exemplary techniques and algorithms used
+for image processing.
 
+Section \ref{sec:robo} first provides a general overview over the RoboCup before
+the use of computer vision in the RoboCup leagues is elaborated in section \ref{sec:cv-robo}.
+Section \ref{sec:ssl-vision} then explains exemplary techniques and algorithms
+which are used in the computer vision software \textit{SSL-Vision}.
+SSL-Vision is used for a centralized processing server in one of the leagues,
+where robots are not fully autonomous, but get instructions from off-field
+computers.\\
 
-
-
-\subsection{Objectives}
-\label{sec:objectives}
-
-
-
-\subsection{Methodology and Structure}
-\label{sec:methodology}
 
 
 
@@ -105,16 +112,13 @@ Course: WWI2010I\\
 %----------------------------------------------------------------------------
 \newpage
 \section{RoboCup \label{sec:robo}}
-Robots play soccer.
-Environment is dynamic.
-
-Long Term Goal “By mid-21st century, a team of fully autonomous humanoid robot
+The long term goal of the RoboCup is that ``by mid-21st century, a team of fully autonomous humanoid robot
 soccer players shall win the soccer game, comply with the official rule of the
 FIFA, against the winner of the most recent World
-Cup.”\footcite[Cf.][]{robo_objectives}
+Cup."\footcite[Cf.][]{robo_objectives}
 
-Computational challenges are in the environment of the RoboCup.
-Comparison to chess, where computers are superior already:
+Computational challenges are in the environment of RoboCup. This becomes
+obvious when compared to chess, where computers are superior already:
 
 \begin{table}[htbp]
 \centering
