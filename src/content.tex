@@ -89,7 +89,7 @@ Course: WWI2010I\\
 RoboCup competitions focus on the game of soccer, where robots compete against
 each other.
 There are different leagues which each have their own challenges in terms of
-computation and research. Computer vision is a research area whichis relevant
+computation and research. Computer vision is a research area which is relevant
 for all leagues in the RoboCup as it is used for tasks such as localization on
 the field or recognition of the ball.\\
 This paper gives a rough overview over the role of computer vision in the
@@ -125,7 +125,7 @@ obvious when compared to chess, where computers are superior already:
 \begin{savenotes}
 \begin{tabular*}{0.7\textwidth}{p{0.25\textwidth} p{0.2\textwidth} p{0.2\textwidth}}
 \toprule
-                    &\textbf{Chess} & \textbf{Robocup} \\
+                    &\textbf{Chess} & \textbf{RoboCup} \\
 \midrule 
 Environment         & static		& dynamic \\
 State change        & turn taking   & real time \\
@@ -134,7 +134,7 @@ Sensor readings     & symbolic      & non-symbolic \\
 Control             & central       & distributed \\
 \bottomrule 
 \end{tabular*}
-  \caption[Comparison of Chess and Robocup]{Comparison of Chess and Robocup\footcite[][]{robo_objectives}}
+  \caption[Comparison of Chess and RoboCup]{Comparison of Chess and RoboCup\footcite[][]{robo_objectives}}
   \label{tab:chess_comparison}
 \end{savenotes}
 \end{table}
@@ -154,7 +154,7 @@ There are three categories within the humanoid league: KidSize (30-60cm height),
 TeenSize (100-120cm) and AdultSize (130cm and taller).\footcite[Cf.][]{robo_humanoid_wiki}
  
 \paragraph{Middle Size}
-In the Middle Size League autonomous robots with zylindric bodies of no more
+In the Middle Size League autonomous robots with cylindrical bodies of no more
 than 50cm diameter play soccer in teams of up to 6 players. Robots may use
 wireless networking to communicate and all sensors are deployed on-board.\footcite[Cf.][]{robo_ms}
  
@@ -252,7 +252,7 @@ positions and directions using COMPUTER VISION
 In other leagues, where the size of each robot is not an issue as it is in the Small Size League, it is possible that the individual units themselves contain the necessary equipment for computer vision. This makes autonomous action possible but involves design tradeoffs concerning computing power and sensors.
 
 Communication between the robots is dependent upon the rules for each league. In the humanoid league for example individual actors are not allowed to share sensory inputs because it contradicts with the goal of "FIFA-like" football.
-In other leagues however, it is possible to have maschine-to-maschine communication.
+In other leagues however, it is possible to have machine-to-machine communication.
 
 Due to the nature of the leagues, computer vision is much more difficult compared to the Small Size League chiefly because the amount of computing power available to each player is limited by the available space and power. Gathering the player's location, friend-foe-recognition and ball trajectory calculations, i.e. the tasks of computer vision, are much harder to realize is this configuration, resulting in much less sophisticated handling of game situations.
 This of course is not the point of these leagues rendering the issue somewhat moot.
@@ -298,10 +298,10 @@ region extraction and region sorting.\footcite[Cf.][]{zickler_ssl_vision}
 
 \paragraph{Color thresholding}
 Color thresholding is done via a lookup table which maps from the input image's
-3d color space (YUV) to a unique color label which represents any of the marker
+3D color space (YUV) to a unique color label which represents any of the marker
 colors, the ball color or other desired colors.\footcite[Cf.][p. 4 et sq.]{zickler_ssl_vision}
 The plugin uses YUV for the color space mapping, which is for instance used
-in PAL and NTSC videos. The \textit{Y} in YUV represents lumination and
+in PAL and NTSC videos. The \textit{Y} in YUV represents illumination and
 \textit{U/V} is used for the color representation.
 
 \begin{savenotes}
@@ -330,7 +330,7 @@ Fig. \ref{fig:yuv} illustrates how the color mapping works. Fig.
 \ref{fig:yuv_normal} shows the normal YUV colorspace and Fig.
 \ref{fig:yuv_mapped} shows the mapped colorspace which replaces regions in the
 colorspace with a single color value. The colors in the input images are
-replaced acordingly to the color mappings before further processing by the other
+replaced accordingly to the color mappings before further processing by the other
 plugins takes place.
 
 
@@ -396,7 +396,7 @@ further research is not critical for success. Other research areas such as strat
 acquisition and machine learning are of higher importance for game success.
 
 The SSL-Vision software which has been described in this paper can be considered
-to be in a mature state. Due to its modulare structure it can be worth considering
+to be in a mature state. Due to its modular structure it can be worth considering
 to extend and use the software in other application fields as well.
 
 
