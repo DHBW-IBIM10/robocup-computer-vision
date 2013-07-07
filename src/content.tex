@@ -297,10 +297,40 @@ Color segmentation is done with plugins for color thresholding, runlength-encodi
 region extraction and region sorting.\footcite[Cf.][]{zickler_ssl_vision}
 
 \paragraph{Color thresholding}
-color thresholding is done via a lookup table which maps from the input image’s
+Color thresholding is done via a lookup table which maps from the input image's
 3d color space (YUV) to a unique color label which represents any of the marker
-colors, the ball color or other desired colors (source code) YUV: Color space,
-e.g. used in PAL and NTSC videos, Y represents lumination and U/V color\footcite[Cf.][]{zickler_ssl_vision}
+colors, the ball color or other desired colors.\footcite[Cf.][p. 4 et sq.]{zickler_ssl_vision}
+The plugin uses YUV for the color space mapping, which is for instance used
+in PAL and NTSC videos. The \textit{Y} in YUV represents lumination and
+\textit{U/V} is used for the color representation.
+
+\begin{figure}
+        \centering
+        \begin{subfigure}[b]{0.3\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{img/YUV.png}
+                \caption{YUV colorspace}
+                \label{fig:yuv_normal}
+        \end{subfigure}%
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
+          %(or a blank line to force the subfigure onto a new line)
+        \begin{subfigure}[b]{0.3\textwidth}
+                \centering
+                \includegraphics[width=\textwidth]{img/YUV_LUT.png}
+                \caption{Mapped YUV colorspace}
+                \label{fig:yuv_mapped}
+        \end{subfigure}
+
+        \caption{Exemplary YUV colorspace mapping}\label{fig:yuv}
+\end{figure}
+
+Fig. \ref{fig:yuv} illustrates how the color mapping works. Fig.
+\ref{fig:yuv_normal} shows the normal YUV colorspace and Fig.
+\ref{fig:yuv_mapped} shows the mapped colorspace which replaces regions in the
+colorspace with a single color value. The colors in the input images are
+replaced acordingly to the color mappings before further processing by the other
+plugins takes place.
+
 
 \paragraph{Runlength encoding}
 
