@@ -304,12 +304,13 @@ The plugin uses YUV for the color space mapping, which is for instance used
 in PAL and NTSC videos. The \textit{Y} in YUV represents lumination and
 \textit{U/V} is used for the color representation.
 
+\begin{savenotes}
 \begin{figure}
         \centering
         \begin{subfigure}[b]{0.3\textwidth}
                 \centering
                 \includegraphics[width=\textwidth]{img/YUV.png}
-                \caption{YUV colorspace}
+                \caption[YUV colorspace]{YUV colorspace\footcite[][]{yuv_img}}
                 \label{fig:yuv_normal}
         \end{subfigure}%
         ~ %add desired spacing between images, e. g. ~, \quad, \qquad etc.
@@ -323,6 +324,7 @@ in PAL and NTSC videos. The \textit{Y} in YUV represents lumination and
 
         \caption{Exemplary YUV colorspace mapping}\label{fig:yuv}
 \end{figure}
+\end{savenotes}
 
 Fig. \ref{fig:yuv} illustrates how the color mapping works. Fig.
 \ref{fig:yuv_normal} shows the normal YUV colorspace and Fig.
@@ -334,20 +336,15 @@ plugins takes place.
 
 \paragraph{Runlength encoding}
 
-\begin{itemize}
-  \item the line by line runlength encoding is applied on the thresholded image to speed up the region extraction that follows (source code)
-  \item simple data compression technique
-  \item Algorithm for runlength encoding of images:
-for each row of pixels:
-remember pixel value and go to next pixel;
-if pixel value equals previous pixel, merge pixels
-  \item Example from Wikipedia:
-“(...) screen containing plain black text on a solid white background. There will be many long runs of white pixels in the blank space, and many short runs of black pixels within the text. Let us take a hypothetical single scan line, with B representing a black pixel and W representing white:
-WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW
-If we apply the run-length encoding data compression algorithm to the above hypothetical scan line, we get the following:
-12W1B12W3B24W1B14W”
-  \item works well due to the previous color thresholding
-\end{itemize}
+Runlength encoding is a simple compression technique in image processing. The
+idea behind this technique is to represent recurring pixel values with a number
+rather than storing each pixel value. Due to the previously applied color thresholding
+this compression technique is very effective.
+The algorithm for the runlength encoding iterate through all rows of the picture
+and for each row it compares the current pixel with the previous pixel. When the pixel values are
+equal they are merged (i.e. stored as one unit). This is repeated for all pixels within each row.
+The line by line runlength encoding is applied on the thresholded image to speed up the
+region extraction that follows.
 
 \paragraph{Region extraction}
 
